@@ -1,0 +1,104 @@
+Jenkins :
+
+On 172.16.3.234
+tvtroot >root@tvt#123
+
+1.yum install java (currently java 1.6 version is running)
+Follow the steps shown in below link:
+
+https://tecadmin.net/install-java-8-on-centos-rhel-and-fedora/
+
+If java doesn't show new version then do below steps:
+
+[root@localhost ~]# which java
+/usr/java/jdk1.6.0_45/bin/java
+
+[root@localhost ~]# echo $JAVA_HOME
+/opt/jdk1.8.0_192
+[root@localhost ~]# rm -f /usr/java/jdk1.6.0_45/bin/java
+
+Now check java -version
+*********************************************************************************************
+
+2.Jenkins
+https://jenkins.io/doc/book/installing/
+
+step 1 - Download Jenkins rpm
+jenkins-2.150.1-1.1.noarch.rpm
+
+And place rpm on /root directory
+
+Install jenkins through RPM
+rpm -Uvh jenkins-2.150.1-1.1.noarch.rpm
+
+###############################################################################################
+
+step 2 - Run JENKINS Manually
+In directory /usr/lib/jenkins/jenkins.war
+java -jar jenkins.war
+
+wait till last line 
+jenkins is fully up and running 
+and then use link 
+http://172.16.3.234:8080/
+
+- Defualt by jenkins.war Using JENKINS
+Go to browser
+enter url ip/localhost:8080
+Start using jenkins
+
+After first run ..it will display initial password in CLI..which will be used on first login:
+/root/.jenkins/secrets/initialAdminPassword   (e9f8accfd26b4c6184aa1494a0e2a200)
+
+After this wizard will start to download all the plugins (we can customize by selection)
+
+Create First Admin User
+Username:Devendra
+Password:tvt@001
+Confirm password:tvt@001
+Full name:Devendra Singh
+E-mail address:devendra@c-zentrix.com
+
+step 5: Instance Configuration
+Jenkins URL:http://172.16.3.234:8080/
+
+############################################################################################################
+
+setp3:By running Jenkin service by configure IP and PORT (/etc/sysconfig/jenkins)
+
+/var/lib/jenkins/secrets/initialAdminPassword(064752c861eb41cbb46aa9a89470e8aa)
+
+After this wizard will start to download all the plugins (we can customize by selection)
+
+Create First Admin User
+Username:Devendra
+Password:tvt@001
+Confirm password:tvt@001
+Full name:Devendra Singh
+E-mail address:devendra@c-zentrix.com
+
+step 5: Instance Configuration
+Jenkins URL:http://172.16.3.234:8081/
+
+Service :
+service jenkins start/restart/stop
+
+
+Jenkins Files:
+Serivce > /etc/init.d/jenkins
+Configuration > /etc/sysconfig/jenkins
+home directory > /var/lib/jenkins
+
+
+This package installation will:
+
+Setup Jenkins as a daemon launched on start. See /etc/init.d/jenkins for more details.
+Create a ‘jenkins’ user to run this service.
+Direct console log output to the file /var/log/jenkins/jenkins.log. Check this file if you are troubleshooting Jenkins.
+Populate /etc/default/jenkins with configuration parameters for the launch, e.g JENKINS_HOME
+Set Jenkins to listen on port 8080. Access this port with your browser to start configuration.
+
+If your /etc/init.d/jenkins file fails to start Jenkins, edit the /etc/default/jenkins to replace the line ----HTTP_PORT=8080---- with ----HTTP_PORT=8081---- Here, "8081" was chosen but you can put another port available.
+
+
+############################################################################################################

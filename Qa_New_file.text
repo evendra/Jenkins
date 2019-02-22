@@ -1,0 +1,5 @@
+When entering the jenkins repository file details (https://github.com/evendra/Jenkins.git)
+then error was showing that not able to do :git ls-remote -h https://github.com/evendra/Jenkins.git
+so when doing git ls-remote -h https://github.com/evendra/Jenkins.git through the server where jenkins is installed then error shows :bash: git: command not found
+After this installed Git on server : using yum install git
+After this error was removed and when build on jenkins then biuld was successful.
